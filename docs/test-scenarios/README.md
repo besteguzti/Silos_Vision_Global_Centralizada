@@ -14,24 +14,26 @@ Si después se quieren recuperar datos reales de Aruba, basta con volver a sincr
 
 El flujo habitual es:
 
-sql script
+```sql
 SOURCE docs/test-scenarios/sql/01_Borrar_datos_tablas.sql;
 SOURCE docs/test-scenarios/sql/<escenario_elegido>.sql;
 SOURCE docs/test-scenarios/sql/99_validacion_escenario_cargado.sql;
+```
 
 Ejemplo:
 
-sql script
+```sql
 SOURCE docs/test-scenarios/sql/01_Borrar_datos_tablas.sql;
 SOURCE docs/test-scenarios/sql/07_Degradacion_aruba_citrix.sql;
 SOURCE docs/test-scenarios/sql/99_validacion_escenario_cargado.sql;
+```
 
 
 Si la base de datos local no tiene todavía la estructura esperada para los snapshots de análisis, ejecutar antes:
 
-sql script
+```sql
 SOURCE docs/test-scenarios/sql/00_Prepara_Estructura.sql;
-sql script
+```
 
 Este script solo prepara estructura. No carga ningún escenario funcional.
 

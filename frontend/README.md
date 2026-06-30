@@ -12,38 +12,49 @@ El frontend no calcula los KPIs principales. Recibe los datos ya preparados por 
 
 ## Arranque
 
-Acceder a la carpeta `frontend` con powershell y:
+Acceder a la carpeta `frontend` con PowerShell y:
 
+```powershell
 npm install
 npm run dev
+```
 
 
 Por defecto, Vite levanta la aplicación en:
 
+```text
 http://localhost:5173
+```
 
 
 Para generar una build de producción:
 
+```powershell
 npm run build
+```
 
 
 ## Configuración
 
 La URL del backend se centraliza en:
 
+```text
 src/config/api.js
+```
 
 
 Variable opcional:
 
-powershell
+```powershell
 $env:VITE_API_BASE_URL="http://localhost:8080"
+```
 
 
 Si no se define, se usa por defecto:
 
+```text
 http://localhost:8080
+```
 
 
 ## Páginas principales
@@ -62,7 +73,7 @@ http://localhost:8080
 
 Endpoints usados en el flujo normal del frontend:
 
-http
+```http
 GET /dashboard/summary
 GET /api/dashboard/executive-summary
 GET /aruba/summary
@@ -72,6 +83,7 @@ GET /glpi/summary
 GET /api/analysis/glpi-platform-relation
 POST /api/test-scenarios/evaluate
 POST /api/metrics/sync
+```
 
 El endpoint `/api/analysis/glpi-platform-relation` alimenta el panel de análisis. Devuelve relaciones técnicas, evolución temporal y relaciones específicas entre KPIs.
 
@@ -79,30 +91,33 @@ El endpoint `/api/analysis/glpi-platform-relation` alimenta el panel de análisi
 
 El backend también expone endpoints útiles para consulta o validación técnica. No todos se usan directamente desde el flujo principal de React.
 
-http
+```http
 GET /api/analysis/technical-degradation-impact
 GET /api/analysis/platform-evolution
 GET /api/analysis/snapshots
 GET /api/kpis/definitions
 GET /api/reports/monthly-context
+```
 
 
 ## Sincronización y diagnóstico
 
 Desde la pantalla de configuración se puede lanzar una sincronización manual:
 
-http
+```http
 POST /api/metrics/sync
+```
 
 
 También existen endpoints específicos de Aruba para sincronización o diagnóstico local:
 
-http
+```http
 POST /aruba/sync-all
 POST /aruba/sync-aps
 POST /aruba/sync-switches
 POST /aruba/sync-switch-client-usage
 GET /aruba/wifi-clients/diagnostics
+```
 
 
 ## Panel de análisis
@@ -115,8 +130,9 @@ No intenta detectar causa raíz de forma automática. Su objetivo es ayudar a re
 
 El banco de pruebas envía escenarios manuales al backend mediante:
 
-http
+```http
 POST /api/test-scenarios/evaluate
+```
 
 
 React no calcula los KPIs ni el resumen operativo. Solo muestra la respuesta devuelta por el backend.
